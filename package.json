@@ -1,5 +1,5 @@
 {
-  "name": "RnTemplate",
+  "name": "rn-template",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,13 +8,24 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "pod-clean": "cd ios && rm -rf Pods Podfile.lock && bundle exec pod cache clean --all && bundle exec pod install && cd .."
+    "pod-clean": "cd ios && rm -rf Pods Podfile.lock && bundle exec pod cache clean --all && bundle exec pod install && cd ..",
+    "pod": "cd ios && bundle exec pod install && cd ..",
+    "sync-added-vector-icons": "npx rnvi-update-plist package.json ios/RnTemplate/Info.plist"
   },
   "dependencies": {
-    "react": "19.1.1",
-    "react-native": "0.82.0",
+    "@react-native-vector-icons/ant-design": "^12.3.0",
+    "@react-native-vector-icons/fontawesome": "^12.3.0",
+    "@react-native-vector-icons/ionicons": "^12.3.0",
     "@react-native/new-app-screen": "0.82.0",
-    "react-native-safe-area-context": "^5.5.2"
+    "@react-navigation/bottom-tabs": "^7.4.8",
+    "@react-navigation/native": "^7.1.18",
+    "axios": "^1.12.2",
+    "moment": "^2.30.1",
+    "react": "19.1.1",
+    "react-hook-form": "^7.64.0",
+    "react-native": "0.82.0",
+    "react-native-safe-area-context": "^5.6.1",
+    "react-native-screens": "^4.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -34,6 +45,7 @@
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-test-renderer": "19.1.1",
+    "reactotron-react-native": "^5.1.17",
     "typescript": "^5.8.3"
   },
   "engines": {
