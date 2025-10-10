@@ -12,7 +12,11 @@
     "pod": "cd ios && bundle exec pod install && cd ..",
     "sync-added-vector-icons": "npx rnvi-update-plist package.json ios/RnTemplate/Info.plist",
     "postinstall": "patch-package",
-    "reset": "npx react-native start --reset-cache"
+    "reset": "npx react-native start --reset-cache",
+    "android-d": "ENVFILE=.env.dev react-native run-android",
+    "android-p": "ENVFILE=.env.prod react-native run-android",
+    "ios-d": "ENVFILE=.env.dev react-native run-ios",
+    "ios-p": "ENVFILE=.env.prod react-native run-ios"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.3.2",
@@ -29,6 +33,7 @@
     "react-hook-form": "^7.64.0",
     "react-native": "0.82.0",
     "react-native-cardview": "^2.0.5",
+    "react-native-config": "^1.5.9",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-safe-area-context": "^5.6.1",

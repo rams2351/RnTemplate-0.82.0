@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import Config from 'react-native-config';
 import { Card } from './Card';
 import GradientBackground from './GradientBackground';
 import Text from './Text';
@@ -13,7 +14,7 @@ const SplashScreen: React.FC = () => {
       end={{ x: 0.8, y: 1 }}
     >
       <Card style={{ margin: 50, width: 'auto' }}>
-        <Text>Online Dating App</Text>
+        <Text>Online Dating App {Config.API_URL}</Text>
       </Card>
     </GradientBackground>
   );
