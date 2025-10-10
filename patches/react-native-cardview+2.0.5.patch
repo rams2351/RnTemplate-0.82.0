@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-cardview/android/build.gradle b/node_modules/react-native-cardview/android/build.gradle
+index b3ff04c..e359e0f 100644
+--- a/node_modules/react-native-cardview/android/build.gradle
++++ b/node_modules/react-native-cardview/android/build.gradle
+@@ -1,7 +1,7 @@
+ 
+ buildscript {
+     repositories {
+-        jcenter()
++        mavenCentral()
+         maven {
+           url 'https://maven.google.com/'
+           name 'Google'
