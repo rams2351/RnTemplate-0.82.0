@@ -7,7 +7,9 @@ import {
 } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
+
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SplashScreen from './src/components/SplashScreen';
 import FontText from './src/screens/Font';
 import HomeScreen from './src/screens/Home';
 import ProfileScreen from './src/screens/Profile';
@@ -20,11 +22,11 @@ function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{ flex: 1 }}>
       <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <Tab.Navigator
-          initialRouteName="Home"
+          initialRouteName="Splash"
           screenOptions={({ route }) => ({
             headerShown: false,
             tabBarActiveTintColor: '#007bff',
@@ -54,6 +56,7 @@ function App() {
             },
           })}
         >
+          <Tab.Screen name="Splash" component={SplashScreen} />
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Text" component={FontText} />
           <Tab.Screen name="Profile" component={ProfileScreen} />

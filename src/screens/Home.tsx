@@ -1,20 +1,26 @@
 import { FontAwesome } from '@react-native-vector-icons/fontawesome';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import GradientBackground from '../components/GradientBackground';
+import GradientText from '../components/GradientText';
+import Text from '../components/Text';
+import { scaler } from '../utils/helpers';
 
 const HomeScreen = () => {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top + 10 }]}>
+    <GradientBackground
+      style={[styles.container, { paddingTop: insets.top + 10 }]}
+    >
       <Text style={styles.title}>Welcome 👋</Text>
       <Text style={styles.subtitle}>This is your home dashboard.</Text>
 
       <TouchableOpacity style={styles.card}>
         <FontAwesome name="home" size={24} color="#007bff" />
         <View style={{ marginLeft: 12 }}>
-          <Text style={styles.cardTitle}>My Appointments</Text>
+          <GradientText style={styles.cardTitle}>My Appointments</GradientText>
           <Text style={styles.cardSubtitle}>View and manage all schedules</Text>
         </View>
       </TouchableOpacity>
@@ -26,7 +32,7 @@ const HomeScreen = () => {
           <Text style={styles.cardSubtitle}>Stay updated with alerts</Text>
         </View>
       </TouchableOpacity>
-    </View>
+    </GradientBackground>
   );
 };
 
@@ -34,16 +40,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f8f9fa',
-    paddingHorizontal: 16,
   },
   title: {
-    fontSize: 26,
+    fontSize: scaler(26),
     fontWeight: '700',
-    color: '#222',
+    // color: '#222',
     marginBottom: 4,
   },
   subtitle: {
-    fontSize: 15,
+    fontSize: scaler(15),
     color: '#555',
     marginBottom: 20,
   },
@@ -60,12 +65,12 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   cardTitle: {
-    fontSize: 16,
+    fontSize: scaler(16),
     fontWeight: '600',
     color: '#222',
   },
   cardSubtitle: {
-    fontSize: 13,
+    fontSize: scaler(13),
     color: '#666',
   },
 });
