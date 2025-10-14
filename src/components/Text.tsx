@@ -7,7 +7,8 @@ import {
   StyleSheet,
   TextStyle,
 } from 'react-native';
-import Colors from '../assets/colors';
+
+import { useTheme } from '@theme/ThemeProvider';
 import Fonts from '../assets/fonts';
 
 type FontType =
@@ -50,6 +51,7 @@ interface TextProps extends RNTextProps {
 
 const Text: React.FC<TextProps> = props => {
   let { style, animatedProps, ...rest } = props;
+  const { colors } = useTheme();
 
   const styles = useMemo(() => {
     const styles = { ...StyleSheet.flatten(style ?? {}) };
@@ -105,7 +107,7 @@ const Text: React.FC<TextProps> = props => {
 
     return {
       textStyle: {
-        color: Colors.textPrimary,
+        color: colors.textPrimary,
         fontFamily,
         fontWeight,
         ...styles,
