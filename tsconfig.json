@@ -12,7 +12,9 @@
       "@utils/*": ["utils/*"],
       "@screens/*": ["screens/*"],
       "@theme/*": ["theme/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@redux/*": ["redux/*"],
+      "@types/*": ["types/*"]
     }
   }
 }

@@ -5,6 +5,8 @@ import Row from '@components/Row';
 import SafeAreaView from '@components/SafeAreaView';
 import Text from '@components/Text';
 import { useAuth } from '@hooks/useAuth';
+import { actions } from '@redux/slices/reducer';
+import { useAppDispatch, useAppSelector } from '@redux/store';
 import NavigationService from '@services/NavigationService';
 import { useTheme } from '@theme/ThemeProvider';
 import { scaler } from '@utils/helpers';
@@ -14,14 +16,29 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 const HomeScreen: React.FC = () => {
   const { setIsLogin } = useAuth();
   const { toggleTheme } = useTheme();
+  const state = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
 
   return (
     <SafeAreaView>
       <Card style={{ margin: scaler(20), width: 'auto' }}>
+        <Text>{JSON.stringify(state.counter)}</Text>
         <View>
           <Button variant="outline" title="Logout Button">
             <GradientText style={styles.gradient}>HomeScreen</GradientText>
           </Button>
+
+          <GradientText style={styles.gradient}>{state.counter}</GradientText>
+
+          <Button
+            title="Increment"
+            onPress={() => dispatch(actions.increment())}
+          />
+          <Button
+            title="Increment"
+            onPress={() => dispatch(actions.decrement())}
+          />
+
           <Button
             variant="outline"
             title="Logout Button"
