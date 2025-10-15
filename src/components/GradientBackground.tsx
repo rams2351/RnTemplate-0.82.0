@@ -1,7 +1,7 @@
-import React from 'react';
+import { useTheme } from '@theme/ThemeProvider';
+import React, { useMemo } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Colors from '../assets/colors';
 
 interface BgGradientProps {
   colors?: string[];
@@ -13,15 +13,20 @@ interface BgGradientProps {
 }
 
 const GradientBackground: React.FC<BgGradientProps> = ({
-  colors = [Colors.textBlue, Colors.textSecondary],
+  colors,
   start = { x: 1, y: 1 },
   end = { x: 0, y: 0 },
   style,
   children,
 }) => {
+  const { colors: themeColors } = useTheme();
+
+  const gradientColors = useMemo(() => {
+    return colors ? colors : [themeColors.textBlue, themeColors.textSecondary];
+  }, [colors, themeColors]);
   return (
     <LinearGradient
-      colors={colors}
+      colors={gradientColors}
       start={start}
       end={end}
       style={[styles.gradient, style]}

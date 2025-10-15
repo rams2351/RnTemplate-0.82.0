@@ -114,7 +114,7 @@ const Text: React.FC<TextProps> = props => {
         includeFontPadding: false,
       },
     };
-  }, [style]);
+  }, [style, colors]);
 
   return (
     <RNText

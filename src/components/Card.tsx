@@ -1,3 +1,4 @@
+import { useTheme } from '@theme/ThemeProvider';
 import React, { useMemo } from 'react';
 import {
   StyleProp,
@@ -7,7 +8,6 @@ import {
 } from 'react-native';
 //@ts-ignore
 import CardView from 'react-native-cardview';
-import colors from '../assets/colors';
 import { scaler } from '../utils/helpers';
 
 interface ICardProps {
@@ -30,6 +30,7 @@ export const Card: React.FC<ICardProps> = ({
   touchableContainerStyle = { width: '100%' },
   ...props
 }) => {
+  const { colors } = useTheme();
   const styles = useMemo(() => {
     const propStyle = StyleSheet.flatten(style || {});
 
@@ -46,7 +47,7 @@ export const Card: React.FC<ICardProps> = ({
         ...StyleSheet.flatten(touchableContainerStyle),
       },
     });
-  }, [!!onPress, style]);
+  }, [!!onPress, style, colors]);
 
   return (
     <MyCardView style={styles.cardStyle} {...props}>

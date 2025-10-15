@@ -1,4 +1,10 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from 'react';
 
 type ThemeType = 'light' | 'dark';
 
@@ -6,6 +12,7 @@ export interface ThemeData {
   theme: ThemeType;
   setTheme: (theme: ThemeType) => void;
   colors: typeof Colors.light;
+  toggleTheme: () => void;
 }
 
 const Colors = {
@@ -37,6 +44,7 @@ const initialTheme: ThemeData = {
   theme: 'light',
   colors: Colors.light,
   setTheme: () => {},
+  toggleTheme: () => {},
 };
 
 const ThemeContext = createContext<ThemeData>(initialTheme);
@@ -45,11 +53,15 @@ export const useTheme = () => useContext(ThemeContext);
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<ThemeType>('light');
+  const toggleTheme = useCallback(() => {
+    setTheme(d => (d == 'dark' ? 'light' : 'dark'));
+  }, [setTheme]);
 
   const value: ThemeData = {
     theme,
     setTheme,
     colors: theme === 'light' ? Colors.light : Colors.dark,
+    toggleTheme,
   };
 
   return (

@@ -11,7 +11,8 @@
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
       "@screens/*": ["screens/*"],
-      "@theme/*": ["theme/*"]
+      "@theme/*": ["theme/*"],
+      "@hooks/*": ["hooks/*"]
     }
   }
 }

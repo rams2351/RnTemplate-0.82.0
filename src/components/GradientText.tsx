@@ -1,19 +1,34 @@
 import MaskedView from '@react-native-masked-view/masked-view';
+import { useTheme } from '@theme/ThemeProvider';
 import React from 'react';
 import { TextProps } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Colors from '../assets/colors';
 import Text from './Text';
 
-const GradientText: React.FC<TextProps> = props => {
+interface IGradientTextProps extends TextProps {
+  colors?: string[];
+  start?: { x: number; y: number };
+  end?: { x: number; y: number };
+}
+
+const GradientText: React.FC<IGradientTextProps> = ({
+  start = { x: 0, y: 0 },
+  end = { x: 0.5, y: 0 },
+  colors,
+  ...rest
+}) => {
+  const { colors: themeColors } = useTheme();
+
   return (
-    <MaskedView maskElement={<Text {...props} />}>
+    <MaskedView maskElement={<Text {...rest} />}>
       <LinearGradient
-        colors={[Colors.textSecondary, Colors.textBlue]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0.8, y: 0 }}
+        colors={
+          colors ? colors : [themeColors.textSecondary, themeColors.textBlue]
+        }
+        start={start}
+        end={end}
       >
-        <Text {...props} style={[props.style, { opacity: 0 }]} />
+        <Text {...rest} style={[rest.style, { opacity: 0 }]} />
       </LinearGradient>
     </MaskedView>
   );
