@@ -5,7 +5,7 @@ import Row from '@components/Row';
 import SafeAreaView from '@components/SafeAreaView';
 import Text from '@components/Text';
 import { useAuth } from '@hooks/useAuth';
-import { actions } from '@redux/slices/reducer';
+import { actions } from '@redux/reducer';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import NavigationService from '@services/NavigationService';
 import { useTheme } from '@theme/ThemeProvider';
@@ -37,6 +37,15 @@ const HomeScreen: React.FC = () => {
           <Button
             title="Increment"
             onPress={() => dispatch(actions.decrement())}
+          />
+
+          <Button
+            title="CallLogin"
+            onPress={() =>
+              dispatch(
+                actions.callLogin({ password: '12345', username: 'ram' }),
+              )
+            }
           />
 
           <Button

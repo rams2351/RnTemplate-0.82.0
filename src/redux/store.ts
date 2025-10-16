@@ -1,13 +1,26 @@
-import { combinedReducer } from '@redux/slices/reducer'
-import { configureStore } from '@reduxjs/toolkit'
-import { useDispatch, useSelector } from 'react-redux'
-// ...
+import { persistedReducer } from '@redux/reducer';
+import { rootSaga } from '@redux/saga';
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+import { Persistor, persistStore } from 'redux-persist';
+const createSagaMiddleware = require('redux-saga').default;
+
+const sagaMiddleware = createSagaMiddleware()
 
 export const store = configureStore({
-    reducer: combinedReducer
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        // serializableCheck: {
+        //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        // },
+        serializableCheck: false,
+        immutableCheck: false,
+    }).concat(sagaMiddleware),
 })
 
+export const persistor: Persistor = persistStore(store);
 
+sagaMiddleware.run(rootSaga);
 
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
