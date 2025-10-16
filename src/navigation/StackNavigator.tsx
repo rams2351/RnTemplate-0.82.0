@@ -3,6 +3,7 @@ import HomeScreen from '@screens/Auth/HomeScreen';
 import ProfileScreen from '@screens/Auth/Profile';
 import FontText from '@screens/Font';
 import LoginScreen from '@screens/Public/LoginScreen';
+import UIcomponents from '@screens/UIcomponents';
 import { STORAGE_KEYS } from '@services/StorageService';
 import { useMemo } from 'react';
 import { useMMKVBoolean } from 'react-native-mmkv';
@@ -11,6 +12,7 @@ const AUTH_SCREENS = {
   HomeScreen,
   ProfileScreen,
   FontText,
+  UIcomponents,
 };
 
 const PUBLIC_SCREENS = {

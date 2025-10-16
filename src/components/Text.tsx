@@ -107,7 +107,7 @@ const Text: React.FC<TextProps> = props => {
 
     return {
       textStyle: {
-        color: colors.textPrimary,
+        color: colors.text,
         fontFamily,
         fontWeight,
         ...styles,

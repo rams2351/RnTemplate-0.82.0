@@ -15,6 +15,7 @@ const SafeAreaView: React.FC<IProps> = ({ style, children, edges }) => {
     return {
       flex: 1,
       backgroundColor: style?.backgroundColor || colors.background,
+      ...style,
     };
   }, [style, colors]);
 

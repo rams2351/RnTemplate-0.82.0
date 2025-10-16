@@ -40,12 +40,8 @@ const HomeScreen: React.FC = () => {
           />
 
           <Button
-            title="CallLogin"
-            onPress={() =>
-              dispatch(
-                actions.callLogin({ password: '12345', username: 'ram' }),
-              )
-            }
+            title="UI Components"
+            onPress={() => NavigationService.push('UIcomponents')}
           />
 
           <Button
